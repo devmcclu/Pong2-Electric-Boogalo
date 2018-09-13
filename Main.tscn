@@ -10,13 +10,16 @@ extents = Vector2( 12.5621, 118.831 )
 
 [node name="Main" type="Node" index="0"]
 
-[node name="player_1" type="KinematicBody2D" parent="." index="0"]
+[node name="player_1" type="Area2D" parent="." index="0"]
 
 position = Vector2( 30, 355 )
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
 script = ExtResource( 1 )
 _sections_unfolded = [ "Transform" ]
 __meta__ = {
@@ -31,6 +34,34 @@ texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="player_1" index="1"]
+
+shape = SubResource( 1 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="player_2" type="Area2D" parent="." index="1"]
+
+position = Vector2( 1250, 355 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+__meta__ = {
+"_edit_group_": true
+}
+speed = 100
+
+[node name="player_2_graphic" type="Sprite" parent="player_2" index="0"]
+
+scale = Vector2( 0.390517, 3.71515 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="player_2" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
