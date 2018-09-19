@@ -18,9 +18,10 @@ func _ready():
 func _process(delta):
 	# Called every frame. Delta is time since last frame.
 	# Update game logic here.
-	if Input.is_action_pressed("player_1_up"):
+	var which = get_name()
+	if Input.is_action_pressed(which+"_up"):
 		self.position.y -= speed *delta
-	if Input.is_action_pressed("player_1_down"):
+	if Input.is_action_pressed(which+"_down"):
 		self.position.y += speed *delta
 	pass
 
