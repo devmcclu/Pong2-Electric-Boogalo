@@ -1,18 +1,28 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/player_1_graphic.png" type="Texture" id=2]
+[ext_resource path="res://ball.gd" type="Script" id=3]
+[ext_resource path="res://ball.png" type="Texture" id=4]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 custom_solver_bias = 0.0
 extents = Vector2( 12.5621, 118.831 )
 
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 32.2289, 31.8867 )
+
 [node name="Main" type="Node" index="0"]
 
-[node name="player_1" type="Area2D" parent="." index="0"]
+[node name="Players" type="Node2D" parent="." index="0"]
+
+[node name="player_1" type="Area2D" parent="Players" index="0"]
 
 position = Vector2( 30, 200 )
+scale = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -26,21 +36,23 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 100
+ball_dir = 1
 
-[node name="player_1_graphic" type="Sprite" parent="player_1" index="0"]
+[node name="player_1_graphic" type="Sprite" parent="Players/player_1" index="0"]
 
 scale = Vector2( 0.390517, 3.71515 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_1" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/player_1" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="player_2" type="Area2D" parent="." index="1"]
+[node name="player_2" type="Area2D" parent="Players" index="1"]
 
 position = Vector2( 1250, 200 )
+scale = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -54,21 +66,23 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 100
+ball_dir = 1
 
-[node name="player_2_graphic" type="Sprite" parent="player_2" index="0"]
+[node name="player_2_graphic" type="Sprite" parent="Players/player_2" index="0"]
 
 scale = Vector2( 0.390517, 3.71515 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_2" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/player_2" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="player_3" type="Area2D" parent="." index="2"]
+[node name="player_3" type="Area2D" parent="Players" index="2"]
 
 position = Vector2( 30, 600 )
+scale = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -82,21 +96,23 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 100
+ball_dir = 1
 
-[node name="player_3_graphic" type="Sprite" parent="player_3" index="0"]
+[node name="player_3_graphic" type="Sprite" parent="Players/player_3" index="0"]
 
 scale = Vector2( 0.390517, 3.71515 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_3" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/player_3" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="player_4" type="Area2D" parent="." index="3"]
+[node name="player_4" type="Area2D" parent="Players" index="3"]
 
 position = Vector2( 1250, 600 )
+scale = Vector2( 1, 1 )
 input_pickable = true
 gravity_vec = Vector2( 0, 1 )
 gravity = 98.0
@@ -110,16 +126,52 @@ __meta__ = {
 "_edit_group_": true
 }
 speed = 100
+ball_dir = 1
 
-[node name="player_3_graphic" type="Sprite" parent="player_4" index="0"]
+[node name="player_3_graphic" type="Sprite" parent="Players/player_4" index="0"]
 
 scale = Vector2( 0.390517, 3.71515 )
 texture = ExtResource( 2 )
 _sections_unfolded = [ "Transform" ]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="player_4" index="1"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Players/player_4" index="1"]
 
 shape = SubResource( 1 )
 _sections_unfolded = [ "Transform" ]
+
+[node name="ball" type="Area2D" parent="." index="1"]
+
+editor/display_folded = true
+position = Vector2( 637.253, 403.395 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_group_": true
+}
+speed = 100
+
+[node name="ball" type="Sprite" parent="ball" index="0"]
+
+scale = Vector2( 1, 1 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ball" index="1"]
+
+shape = SubResource( 2 )
+
+[connection signal="area_entered" from="Players/player_1" to="Players/player_1" method="_on_area_entered"]
+
+[connection signal="area_entered" from="Players/player_2" to="Players/player_2" method="_on_area_entered"]
+
+[connection signal="area_entered" from="Players/player_3" to="Players/player_3" method="_on_area_entered"]
+
+[connection signal="area_entered" from="Players/player_4" to="Players/player_4" method="_on_area_entered"]
 
 

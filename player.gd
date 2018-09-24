@@ -10,6 +10,9 @@ var velocity = Vector2()
 #Speed at which the player paddle moves
 export var speed = 1
 
+#Direction in which ball moves
+export var ball_dir = 1
+
 func _ready():
 	# Called when the node is added to the scene for the first time.
 	# Initialization here
@@ -24,3 +27,10 @@ func _process(delta):
 	if Input.is_action_pressed(which+"_down"):
 		self.position.y += speed *delta
 	pass
+
+func _on_area_entered(area):
+	if area.get_name() == "ball":
+		# assign new direction
+		area.direction = Vector2(ball_dir, randf() * 2 - 1).normalized()
+
+	pass # replace with function body
