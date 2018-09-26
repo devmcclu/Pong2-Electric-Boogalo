@@ -1,9 +1,5 @@
 extends Area2D
 
-# class member variables go here, for example:
-# var a = 2
-# var b = "textvar"
-
 #Create the Vector which the player moves on
 var velocity = Vector2()
 
@@ -16,9 +12,8 @@ export var ball_dir = 1
 #Player identification for score
 export var player_number = 1
 
-func _process(delta):
-	# Called every frame. Delta is time since last frame.
-	# Update game logic here.
+func _process(delta):	
+	# Get the inputs for the specific player
 	var which = get_name()
 	if Input.is_action_pressed(which+"_up"):
 		self.position.y -= speed *delta

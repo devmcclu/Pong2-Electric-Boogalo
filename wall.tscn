@@ -8,7 +8,7 @@
 custom_solver_bias = 0.0
 extents = Vector2( 636.363, 31.9994 )
 
-[node name="wall_top" type="Area2D"]
+[node name="wall_top" type="Area2D" index="0"]
 
 position = Vector2( 640, -22 )
 input_pickable = true
@@ -23,6 +23,7 @@ _sections_unfolded = [ "Pickable", "Transform" ]
 __meta__ = {
 "_edit_group_": true
 }
+y_dir = 1
 
 [node name="wall" type="Sprite" parent="." index="0"]
 
