@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://player.gd" type="Script" id=1]
 [ext_resource path="res://graphics/player_1_graphic.png" type="Texture" id=2]
@@ -7,8 +7,7 @@
 [ext_resource path="res://graphics/player_4_graphic.png" type="Texture" id=5]
 [ext_resource path="res://ball.gd" type="Script" id=6]
 [ext_resource path="res://graphics/ball.png" type="Texture" id=7]
-[ext_resource path="res://wall.gd" type="Script" id=8]
-[ext_resource path="res://graphics/wall.png" type="Texture" id=9]
+[ext_resource path="res://wall.tscn" type="PackedScene" id=8]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -19,11 +18,6 @@ extents = Vector2( 12.5621, 118.831 )
 
 custom_solver_bias = 0.0
 extents = Vector2( 32.2289, 31.8867 )
-
-[sub_resource type="RectangleShape2D" id=3]
-
-custom_solver_bias = 0.0
-extents = Vector2( 636.363, 31.9994 )
 
 [sub_resource type="RectangleShape2D" id=4]
 
@@ -189,56 +183,14 @@ shape = SubResource( 2 )
 
 [node name="walls" type="Node2D" parent="." index="2"]
 
-[node name="wall_top" type="Area2D" parent="walls" index="0"]
+[node name="wall_top" parent="walls" index="0" instance=ExtResource( 8 )]
 
-position = Vector2( 640, -22 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 8 )
-_sections_unfolded = [ "Pickable", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
+y_dir = 1
 
-[node name="wall" type="Sprite" parent="walls/wall_top" index="0"]
+[node name="wall_top2" parent="walls" index="1" instance=ExtResource( 8 )]
 
-scale = Vector2( 21.4855, 1 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall_top" index="1"]
-
-shape = SubResource( 3 )
-
-[node name="wall_bottom" type="Area2D" parent="walls" index="1"]
-
-position = Vector2( 640, 741 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-_sections_unfolded = [ "Pickable", "Transform" ]
-__meta__ = {
-"_edit_group_": true
-}
-
-[node name="wall" type="Sprite" parent="walls/wall_bottom" index="0"]
-
-scale = Vector2( 21.4855, 1 )
-texture = ExtResource( 9 )
-_sections_unfolded = [ "Transform" ]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="walls/wall_bottom" index="1"]
-
-shape = SubResource( 3 )
+position = Vector2( 640, 740 )
+y_dir = 2
 
 [node name="goals" type="Node2D" parent="." index="3"]
 
