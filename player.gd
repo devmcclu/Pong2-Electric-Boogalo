@@ -29,3 +29,5 @@ func _on_area_entered(area):
 	if area.get_name() == "ball":
 		# assign new direction
 		area.direction = Vector2(ball_dir, randf() * 2 - 1).normalized()
+		area.last_player = self.player_number
+		print(area.last_player)

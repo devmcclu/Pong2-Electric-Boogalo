@@ -8,6 +8,8 @@ extends Area2D
 export var speed = 100
 #initial ball movement
 var direction = Vector2(-1, 0)
+#Get the last player who touched the ball
+var last_player = 0
 
 func _ready():
 	# Called when the node is added to the scene for the first time.
