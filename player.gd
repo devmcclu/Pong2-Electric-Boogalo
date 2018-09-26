@@ -12,6 +12,8 @@ export var ball_dir = 1
 #Player identification for score
 export var player_number = 1
 
+var score = 0
+
 func _process(delta):	
 	# Get the inputs for the specific player
 	var which = get_name()
