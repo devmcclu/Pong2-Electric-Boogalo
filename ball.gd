@@ -6,11 +6,13 @@ export var speed = 100
 var direction = Vector2(-1, 0)
 #Get the last player who touched the ball
 var last_player = 0
+#Create initial position of ball
+onready var initial_pos = self.position
 
-func _ready():
-	# Get position of ball on spawn
-	position = self.position
-	pass
+func reset():
+	position = initial_pos
+	speed = 100
+	direction = Vector2(-1, 0)
 
 func _process(delta):
 	#Create new position of ball every frame

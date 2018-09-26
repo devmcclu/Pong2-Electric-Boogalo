@@ -24,5 +24,5 @@ func _on_area_entered(area):
 		player = get_node("../../players/player_"+str(area.last_player))
 		player.score += 1
 		score_text.text = "Player " + str(area.last_player) + ": " + str(player.score)
-		area.queue_free()
+		area.reset()
 	pass # replace with function body
