@@ -11,7 +11,6 @@ onready var initial_pos = self.position
 
 func reset():
 	position = initial_pos
-	speed = 100
 	direction = Vector2(-1, 0)
 
 func _process(delta):

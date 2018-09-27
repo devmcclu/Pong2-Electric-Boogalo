@@ -24,6 +24,8 @@ extents = Vector2( 32.2289, 31.8867 )
 
 [node name="players" type="Node2D" parent="." index="0"]
 
+editor/display_folded = true
+
 [node name="player_1" type="Area2D" parent="players" index="0"]
 
 position = Vector2( 30, 200 )
@@ -159,7 +161,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
-speed = 100
+speed = 300
 
 [node name="ball" type="Sprite" parent="ball" index="0"]
 
@@ -194,6 +196,7 @@ position = Vector2( 1280, 360 )
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="4"]
 
+editor/display_folded = true
 layer = 1
 offset = Vector2( 0, 0 )
 rotation = 0.0
